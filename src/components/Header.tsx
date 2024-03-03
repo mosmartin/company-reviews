@@ -3,7 +3,11 @@ import Logo from "./Logo";
 import PageHeading from "./PageHeading";
 import Pattern from "./Pattern";
 
-const Header = () => {
+type HeaderProps = {
+  handleAddToFeedbackList: (text: string) => void;
+};
+
+const Header = ({ handleAddToFeedbackList }: HeaderProps) => {
   return (
     <header>
       <Pattern />
@@ -12,7 +16,7 @@ const Header = () => {
 
       <PageHeading />
 
-      <FeedbackForm />
+      <FeedbackForm onAddToFeedbackList={handleAddToFeedbackList} />
     </header>
   );
 };
