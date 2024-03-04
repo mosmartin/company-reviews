@@ -1,29 +1,12 @@
-import { TFeedbackItem } from "../../lib/types";
 import FeedbackList from "../feeback/FeedbackList";
 import Header from "./Header";
 
-type ContentProps = {
-  feedbackItems: TFeedbackItem[];
-  isLoading: boolean;
-  errorMessage: string;
-  handleAddToFeedbackList: (text: string) => void;
-};
-
-function Content({
-  feedbackItems,
-  isLoading,
-  errorMessage,
-  handleAddToFeedbackList,
-}: Readonly<ContentProps>) {
+function Content() {
   return (
     <main className="container">
-      <Header handleAddToFeedbackList={handleAddToFeedbackList} />
+      <Header />
 
-      <FeedbackList
-        feedbackItems={feedbackItems}
-        isLoading={isLoading}
-        errorMessage={errorMessage}
-      />
+      <FeedbackList />
     </main>
   );
 }
