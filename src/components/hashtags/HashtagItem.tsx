@@ -1,11 +1,12 @@
 type HashtagItemProps = {
   company: string;
+  onSelectCompany: (company: string) => void;
 };
 
-const HashtagItem = ({ company }: HashtagItemProps) => {
+const HashtagItem = ({ company, onSelectCompany }: HashtagItemProps) => {
   return (
     <li key={company}>
-      <button>#{company}</button>
+      <button onClick={() => onSelectCompany(company)}>#{company}</button>
     </li>
   );
 };
