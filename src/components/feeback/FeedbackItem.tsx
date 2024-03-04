@@ -8,12 +8,16 @@ type FeedbackItemProps = {
 
 const FeedbackItem = ({ feedbackItem }: FeedbackItemProps) => {
   const [open, setOpen] = useState(false);
+  const [upvoteCount, setUpvoteCount] = useState(feedbackItem.upvoteCount);
 
   return (
-    <li className={`feedback ${open ? "feedback--expand" : ""}`} onClick={() => setOpen(prev => !prev)}>
-      <button>
+    <li
+      className={`feedback ${open ? "feedback--expand" : ""}`}
+      onClick={() => setOpen((prev) => !prev)}
+    >
+      <button onClick={() => setUpvoteCount((prev) => ++prev)}>
         <TriangleUpIcon />
-        <span>{feedbackItem.upvoteCount}</span>
+        <span>{upvoteCount}</span>
       </button>
 
       <div>
