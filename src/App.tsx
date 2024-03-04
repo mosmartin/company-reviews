@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Content from "./components/layout/Content";
 import Footer from "./components/layout/Footer";
 import HashTagList from "./components/hashtags/HashTagList";
@@ -96,11 +96,11 @@ function App() {
     return [...new Set(companies)];
   };
 
-  const filteredCompanies = selectedCompany
+  const filteredCompanies = useMemo(() => selectedCompany
     ? feedbackItems.filter(
         (feedbackItem) => feedbackItem.company === selectedCompany
       )
-    : feedbackItems;
+    : feedbackItems, [selectedCompany, feedbackItems]);
 
   useEffect(() => {
     fetchFeedbacks();
