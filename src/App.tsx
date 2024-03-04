@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Content from "./components/layout/Content";
 import Footer from "./components/layout/Footer";
-import HashTagList from "./components/HashTagList";
+import HashTagList from "./components/hashtags/HashTagList";
 import { TFeedbackItem } from "./lib/types";
 
 function App() {
@@ -81,6 +81,16 @@ function App() {
     await postFeedback(feedback);
   };
 
+  const companyList = () => {
+    const companies = feedbackItems
+      .map((feedback) => feedback.company)
+      .filter((company, index, arr) => {
+        return arr.indexOf(company) === index;
+      });
+
+    return [...new Set(companies)];
+  };
+
   useEffect(() => {
     fetchFeedbacks();
   }, []);
@@ -96,7 +106,7 @@ function App() {
         handleAddToFeedbackList={handleAddToFeedbackList}
       />
 
-      <HashTagList />
+      <HashTagList companyList={companyList} />
     </div>
   );
 }
